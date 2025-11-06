@@ -47,7 +47,7 @@ To set up the Git hooks:
    git config --global user.email "bniladridas@users.noreply.github.com"
    ```
 
-4. The setup script automatically configures useful Git aliases from `.gitconfig`.
+4. The setup script automatically configures useful Git aliases from `.gitconfig` and lets you choose the bracket type for commit scopes.
 
    Available aliases:
    - `git track <branch>`: Set upstream to origin/<branch>

@@ -56,4 +56,16 @@ else
   echo "Git config file not found; clone the repo first."
 fi
 
+echo "Configuring commit message scope brackets..."
+read -r -p "Choose bracket type for commit scopes (1 for [], 2 for ()): " bracket_choice
+if [ "$bracket_choice" = "1" ]; then
+  sed -i '' 's/(\[.+?\]|\(.+?\))/(\[.+\])/g' ~/GitHub-dotfiles/git-hooks/pre-push
+  echo "Set to [] brackets."
+elif [ "$bracket_choice" = "2" ]; then
+  sed -i '' 's/(\[.+?\]|\(.+?\))/(\(.+\))/g' ~/GitHub-dotfiles/git-hooks/pre-push
+  echo "Set to () brackets."
+else
+  echo "Invalid choice, keeping default []."
+fi
+
 echo "Setup complete! Please restart your terminal or run 'source ~/.zprofile' to apply changes."
