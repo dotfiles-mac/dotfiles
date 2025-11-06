@@ -14,7 +14,7 @@ git clone https://github.com/bniladridas/GitHub-dotfiles.git ~/GitHub-dotfiles
 
 ### Initial Mac Setup
 
-For a new Mac, first run the setup script to install Zsh, Homebrew, Python, Node.js, and opencode:
+For a new Mac, first run the setup script to install Zsh, Homebrew, Python, Node.js, GitHub CLI, Docker CLI, and opencode:
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/bniladridas/GitHub-dotfiles/main/setup-mac.sh)"
