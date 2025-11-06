@@ -91,6 +91,13 @@ You can modify the `pre-push` hook in `git-hooks/pre-push` to add custom checks.
 
 The hook outputs detailed messages for each check. Run `git push` to see the validation in action.
 
+## Docker Images
+
+Pre-built Docker images are available for containerized use:
+
+- **Docker Hub**: `docker pull harpertoken/dotfiles:latest`
+- **GHCR**: `docker pull ghcr.io/bniladridas/github-dotfiles:latest`
+
 ## Requirements
 
 - macOS
