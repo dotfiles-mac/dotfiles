@@ -19,13 +19,7 @@ fi
 echo "🔍 Running pre-commit checks..."
 pre-commit run --all-files || exit 1
 
-# --- 2. Run yamllint
-if ! command -v yamllint &>/dev/null; then
-    echo "❌ yamllint not found. Install with: pip install yamllint"
-    exit 1
-fi
-echo "🔍 Running yamllint..."
-yamllint . || exit 1
+# --- 2. YAML checking is handled by pre-commit check-yaml
 
 # --- 3. Validate each ref being pushed
 while read local_ref local_sha remote_ref remote_sha; do
