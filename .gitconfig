@@ -1,0 +1,9 @@
+[alias]
+  track = branch --set-upstream-to=origin/
+  untrack = branch --unset-upstream
+  branches = branch -a
+  status = status -sb
+  lg = log --oneline --graph --decorate
+  co = checkout
+  ci = commit
+  st = status

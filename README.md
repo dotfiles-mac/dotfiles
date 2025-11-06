@@ -47,6 +47,22 @@ To set up the Git hooks:
    git config --global user.email "bniladridas@users.noreply.github.com"
    ```
 
+4. (Optional) Include useful Git aliases by copying `.gitconfig` to your home directory:
+
+   ```bash
+   cp ~/GitHub-dotfiles/.gitconfig ~/.gitconfig
+   ```
+
+   Available aliases:
+   - `git track <branch>`: Set upstream to origin/<branch>
+   - `git untrack <branch>`: Unset upstream for <branch>
+   - `git branches`: List all branches (local and remote)
+   - `git status`: Short status
+   - `git lg`: Log with graph
+   - `git co <branch>`: Checkout
+   - `git ci`: Commit
+   - `git st`: Status
+
 4. (Optional) Install and set up pre-commit for enhanced checks:
 
    ```bash
