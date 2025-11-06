@@ -48,6 +48,15 @@ brew install gh
 echo "Installing Docker CLI..."
 brew install docker
 
+echo "Setting up Docker Hub..."
+read -r -p "Enter Docker Hub token for user 'harpertoken' (or press enter to skip): " docker_token
+if [ -n "$docker_token" ]; then
+  echo "$docker_token" | docker login -u harpertoken --password-stdin
+  echo "Logged in to Docker Hub as harpertoken."
+else
+  echo "Skipped Docker Hub login."
+fi
+
 echo "Setting up Git config..."
 if [ -f ~/GitHub-dotfiles/.gitconfig ]; then
   cp ~/GitHub-dotfiles/.gitconfig ~/.gitconfig
