@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
     git \
     python3 \
     python3-pip \
+    pipx \
     nodejs \
     npm \
     ruby \
@@ -13,7 +14,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install pre-commit
-RUN pip3 install pre-commit
+RUN pipx install pre-commit
 
 # Copy dotfiles
 COPY . /dotfiles
