@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+# ==========================================================
+# Global Git pre-push hook
+# Author: Niladri Das
+# Purpose: Run pre-commit and yamllint checks (if available),
+#          validate commit messages, and verify author info.
+# ==========================================================
+
+set -e
+
+# --- 1. Run pre-commit checks (if installed)
+if command -v pre-commit &>/dev/null; then
+    echo "🔍 Running pre-commit checks..."
+    pre-commit run --all-files || exit 1
+else
+    echo "⚠️  pre-commit not found, skipping."
+fi
+
+# --- 2. Run yamllint (if installed)
+if command -v yamllint &>/dev/null; then
+    echo "🔍 Running yamllint..."
+    yamllint . || exit 1
+else
+    echo "⚠️  yamllint not found, skipping."
+fi
+
+# --- 3. Get commit range
+local_ref=$1
+local_sha=$2
+remote_ref=$3
+remote_sha=$4
+
+if [ "$local_sha" = "0000000000000000000000000000000000000000" ]; then
+    exit 0
+fi
+
+if [ "$remote_sha" = "0000000000000000000000000000000000000000" ]; then
+    commits=$(git rev-list $local_sha --not --all)
+else
+    commits=$(git rev-list $local_sha --not $remote_sha)
+fi
+
+# --- 4. Validate each commit
+echo "🔎 Checking commits for message and author consistency..."
+for commit in $commits; do
+    msg=$(git log --format=%B -n 1 $commit)
+    first_line=$(echo "$msg" | head -1)
+    author_name=$(git log -1 --format='%an' $commit)
+    author_email=$(git log -1 --format='%ae' $commit)
+
+    # Validate commit message
+    if [ ${#first_line} -gt 40 ]; then
+        echo "❌ Commit $commit message too long: ${#first_line} chars (max 40)"
+        exit 1
+    fi
+    if echo "$first_line" | grep -q '[A-Z]'; then
+        echo "❌ Commit $commit message contains uppercase: $first_line"
+        exit 1
+    fi
+    if ! echo "$first_line" | grep -qE '^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\[.+\])?: .+'; then
+        echo "❌ Commit $commit has invalid message format: $first_line"
+        echo "   Please use: type[scope]: description (lowercase, ≤40 chars)"
+        exit 1
+    fi
+
+    # Validate author identity
+    if [ "$author_name" != "Niladri Das" ]; then
+        echo "❌ Commit $commit has incorrect author name: $author_name"
+        echo "   Expected: Niladri Das"
+        exit 1
+    fi
+    if [ "$author_email" != "bniladridas@users.noreply.github.com" ]; then
+        echo "❌ Commit $commit has incorrect author email: $author_email"
+        echo "   Expected: bniladridas@users.noreply.github.com"
+        exit 1
+    fi
+done
+
+echo "✅ All checks passed successfully."
+
