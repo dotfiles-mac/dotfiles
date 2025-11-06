@@ -31,4 +31,7 @@ echo "Current shell: $SHELL"
 echo "Installing opencode..."
 brew install opencode
 
+echo "Installing GitHub CLI..."
+brew install gh
+
 echo "Setup complete! Please restart your terminal or run 'source ~/.zprofile' to apply changes."
