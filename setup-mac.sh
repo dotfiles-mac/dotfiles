@@ -55,6 +55,9 @@ echo "Installing pre-commit..."
 export PATH="$HOME/.local/bin:$PATH"
 pipx install pre-commit
 
+echo "Installing shellcheck..."
+brew install shellcheck
+
 echo "Installing Docker CLI..."
 brew install docker
 
