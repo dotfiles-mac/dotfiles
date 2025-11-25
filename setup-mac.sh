@@ -67,6 +67,12 @@ pipx install pre-commit
 echo "Installing shellcheck..."
 brew install shellcheck
 
+echo "Installing actionlint..."
+brew install actionlint
+
+echo "Installing yamllint..."
+brew install yamllint
+
 echo "Installing Docker CLI..."
 brew install docker
 
