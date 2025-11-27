@@ -1,6 +1,6 @@
 # GitHub Dotfiles
 
-This repository contains global Git hooks for maintaining consistent commit standards and author identity across your projects.
+This repository provides a comprehensive toolkit for developers, including global Git hooks for consistent commit standards and author identity, automated Mac setup scripts for essential development tools (Python, Node.js, Rust, Go, Flutter, etc.), security scanning bots (CodeQL and Trivy) for vulnerability detection, and a Dart-based version bump system. It ensures secure, standardized, and efficient development workflows across projects.
 
 ## Installation
 
@@ -79,6 +79,7 @@ The setup script automatically configures Git to use the hooks globally and make
 - **Commit message validation**: Commit-msg hook ensures messages start with conventional type and are lowercase ≤60 chars. Pre-push hook enforces stricter format with scope, ≤40 chars.
 - **Author identity verification**: Checks that commits are authored by "Niladri Das" with email "bniladridas@users.noreply.github.com".
 - **Automated vulnerability scanning**: CodeQL and Trivy bots scan every push and PR for security issues, ensuring robust protection.
+- **Version management**: Dart-powered version bump bot automates semantic versioning updates for the package.
 
 ## Handling errors
 
@@ -111,6 +112,7 @@ Pre-built Docker images are available for containerized use:
 - Git
 - Python 3.12+ (installed via setup script)
 - Node.js (installed via setup script)
+- Dart SDK (for version bump functionality)
 
 ## Contributing
 

@@ -76,6 +76,9 @@ brew install yamllint
 echo "Installing Flutter..."
 brew install flutter
 
+echo "Installing Dart SDK..."
+brew install dart-sdk
+
 echo "Installing Docker CLI..."
 brew install docker
 
