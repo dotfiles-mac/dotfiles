@@ -12,6 +12,18 @@ git clone https://github.com/bniladridas/github-dotfiles.git ~/github-dotfiles
 
 ## Usage
 
+### Dart CLI Tool
+
+Install Dart SDK, then use the CLI tool for managing dotfiles:
+
+```bash
+dart pub global activate --source path .
+dotfiles update    # Update repository
+dotfiles restore   # Restore dotfiles
+dotfiles setup     # Run Mac setup (macOS only)
+dotfiles version   # Show version
+```
+
 ### Updating and Restoring Dotfiles
 
 To update the repository and restore the latest dotfiles to your home directory:
