@@ -26,10 +26,5 @@ runs:
       run: pip install yamllint
       shell: bash
     - name: Install actionlint
-      run: |
-        curl -sSfL \
-          https://github.com/rhysd/actionlint/releases/download/v1.7.7/actionlint_1.7.7_linux_amd64.tar.gz \
-          -o actionlint.tar.gz
-        tar -xzf actionlint.tar.gz
-        mv actionlint_1.7.7_linux_amd64/actionlint /usr/local/bin/
+      run: curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash | bash
       shell: bash
