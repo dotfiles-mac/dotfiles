@@ -1,7 +1,7 @@
 ---
 # SPDX-License-Identifier: MIT
 
-name: github-dotfiles
+name: dotfiles_cli
 description: Dotfiles with Git hooks, Mac setup, security scanning, and version management.
 version: 1.4.10
 environment:
