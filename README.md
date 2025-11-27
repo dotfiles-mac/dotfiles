@@ -78,6 +78,7 @@ The setup script automatically configures Git to use the hooks globally and make
 - **YAML linting**: Runs check-yaml from pre-commit.
 - **Commit message validation**: Commit-msg hook ensures messages start with conventional type and are lowercase ≤60 chars. Pre-push hook enforces stricter format with scope, ≤40 chars.
 - **Author identity verification**: Checks that commits are authored by "Niladri Das" with email "bniladridas@users.noreply.github.com".
+- **Automated vulnerability scanning**: CodeQL and Trivy bots scan every push and PR for security issues, ensuring robust protection.
 
 ## Handling errors
 
