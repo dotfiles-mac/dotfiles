@@ -1,0 +1,20 @@
+# Dart
+.dart_tool/
+pubspec.lock
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# Build
+build/
+
+# IDE
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.swp
