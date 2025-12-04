@@ -15,6 +15,21 @@
 import 'dart:io';
 import 'package:args/args.dart';
 
+void _printUsageAndExit(ArgParser parser, {int? exitCode}) {
+  print('Usage: dotfiles <command>');
+  print('');
+  print('Commands:');
+  print('  update   - Update repository');
+  print('  restore  - Restore dotfiles');
+  print('  setup    - Run setup script (Mac only)');
+  print('  version  - Show version');
+  print('');
+  print(parser.usage);
+  if (exitCode != null) {
+    exit(exitCode);
+  }
+}
+
 void main(List<String> arguments) {
   final parser = ArgParser()
     ..addFlag('help', abbr: 'h', help: 'Show help')
@@ -26,26 +41,11 @@ void main(List<String> arguments) {
   final results = parser.parse(arguments);
 
   if (results['help'] as bool) {
-    print('Usage: dotfiles <command>');
-    print('');
-    print('Commands:');
-    print('  update   - Update repository');
-    print('  restore  - Restore dotfiles');
-    print('  setup    - Run setup script (Mac only)');
-    print('  version  - Show version');
-    print('');
-    print(parser.usage);
-    return;
+    _printUsageAndExit(parser);
   }
 
   if (results.command == null) {
-    print('Usage: dotfiles <command>');
-    print('Commands:');
-    print('  update   - Update repository');
-    print('  restore  - Restore dotfiles');
-    print('  setup    - Run setup script (Mac only)');
-    print('  version  - Show version');
-    exit(1);
+    _printUsageAndExit(parser, exitCode: 1);
   }
 
   switch (results.command!.name) {
