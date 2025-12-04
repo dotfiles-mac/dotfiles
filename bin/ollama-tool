@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -e
 # Wrapper script for GitHub Dotfiles Ollama
 # Assumes github-dotfiles-ollama is in the same directory as this script's parent
 
