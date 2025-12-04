@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# SPDX-License-Identifier: MIT
+
 # Read the commit message from the file passed as argument
 commit_msg_file=$1
 commit_msg=$(cat "$commit_msg_file")

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: MIT
 # ==========================================================
 # Global Git pre-push hook
 # Author: Niladri Das
