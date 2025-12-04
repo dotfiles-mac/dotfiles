@@ -32,19 +32,19 @@ struct GenerateResponse {
     response: String,
 }
 
-/// Application error types.
+/// Represents errors that can occur within the application.
 #[derive(Debug, Error)]
 pub enum Error {
-    /// HTTP request failed.
+    /// An error from the `reqwest` crate during an HTTP request.
     #[error("HTTP request failed: {0}")]
     Reqwest(#[from] reqwest::Error),
-    /// IO error.
+    /// An I/O error occurred.
     #[error("IO error: {0}")]
     Io(#[from] std::io::Error),
-    /// JSON parsing error.
+    /// An error occurred during JSON serialization or deserialization.
     #[error("JSON parsing error: {0}")]
     Serde(#[from] serde_json::Error),
-    /// Ollama command failed.
+    /// An external `ollama` command returned a non-zero exit status.
     #[error("Ollama command failed: {0}")]
     Command(String),
 }
