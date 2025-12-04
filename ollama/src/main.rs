@@ -1,11 +1,8 @@
 // SPDX-License-Identifier: MIT
 
-/// # Ollama Tool
-///
-/// A command-line tool for managing Ollama models.
-
-//! This crate provides a CLI tool for interacting with Ollama models,
-//! including listing, pulling, running, and generating responses.
+//! # Ollama Tool
+//!
+//! A command-line tool for managing Ollama models.
 
 mod cli;
 mod models;
