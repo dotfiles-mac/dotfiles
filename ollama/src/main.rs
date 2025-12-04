@@ -3,6 +3,10 @@
 /// # Ollama Tool
 ///
 /// A command-line tool for managing Ollama models.
+
+//! This crate provides a CLI tool for interacting with Ollama models,
+//! including listing, pulling, running, and generating responses.
+
 mod cli;
 mod models;
 mod ollama;
@@ -48,6 +52,7 @@ pub enum Error {
     Command(String),
 }
 
+/// Main entry point for the Ollama CLI tool.
 #[tokio::main]
 async fn main() -> Result<(), Error> {
     let cli = Cli::parse();
