@@ -11,12 +11,12 @@ pub async fn fetch_models() -> Result<Vec<String>, Box<dyn std::error::Error>> {
 
     let mut models = Vec::new();
     for element in document.select(&selector) {
-        if let Some(href) = element.value().attr("href")
-            && let Some(name) = href.strip_prefix("/library/")
-            && !name.contains('/')
-            && !models.contains(&name.to_string())
-        {
-            models.push(name.to_string());
+        if let Some(href) = element.value().attr("href") {
+            if let Some(name) = href.strip_prefix("/library/") {
+                if !name.contains('/') && !models.contains(&name.to_string()) {
+                    models.push(name.to_string());
+                }
+            }
         }
     }
     models.sort();
