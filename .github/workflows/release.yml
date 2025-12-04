@@ -35,12 +35,12 @@ jobs:
       run: |
         CURRENT_VERSION=$(cat VERSION)
         PREVIOUS_VERSION=$(git show HEAD~1:VERSION 2>/dev/null || echo "")
-        if [ "$CURRENT_VERSION" != "$PREVIOUS_VERSION" ]; then
-          echo "version_changed=true" >> $GITHUB_OUTPUT
-          echo "new_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
-        else
-          echo "version_changed=false" >> $GITHUB_OUTPUT
-        fi
+         if [ "$CURRENT_VERSION" != "$PREVIOUS_VERSION" ]; then
+           echo "version_changed=true" >> "$GITHUB_OUTPUT"
+           echo "new_version=$CURRENT_VERSION" >> "$GITHUB_OUTPUT"
+         else
+           echo "version_changed=false" >> "$GITHUB_OUTPUT"
+         fi
     - name: Create release
       if: steps.version_check.outputs.version_changed == 'true'
       env:
