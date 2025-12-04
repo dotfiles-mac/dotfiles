@@ -16,6 +16,8 @@ struct Cli {
 enum Commands {
     /// List available models from Ollama library
     List,
+    /// List installed models
+    Installed,
     /// Pull a model
     Pull { model: String },
     /// Run a model
@@ -66,6 +68,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             for model in models {
                 println!("- {}", model);
             }
+        }
+        Commands::Installed => {
+            println!("Listing installed models...");
+            run_ollama_command(&["list"])?;
         }
         Commands::Pull { model } => {
             println!("Pulling model: {}", model);

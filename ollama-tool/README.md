@@ -41,6 +41,7 @@ The script builds the tool if needed and passes arguments to it.
 ### Commands
 
 - `list`: Fetches and displays available models from ollama.ai/library
+- `installed`: Lists locally installed models
 - `pull <model>`: Downloads the specified model using Ollama CLI
 - `run <model>`: Launches the model in interactive chat mode with a helpful system prompt
 
