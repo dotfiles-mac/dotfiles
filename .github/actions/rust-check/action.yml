@@ -1,0 +1,26 @@
+name: 'Rust Check'
+description: 'Run Rust formatting, linting, build, and test'
+inputs:
+  working-directory:
+    description: 'Directory to run commands in'
+    required: false
+    default: '.'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: check formatting
+      run: cd ${{ inputs.working-directory }} && cargo fmt --check
+      shell: bash
+
+    - name: run clippy
+      run: cd ${{ inputs.working-directory }} && cargo clippy -- -D warnings
+      shell: bash
+
+    - name: build
+      run: cd ${{ inputs.working-directory }} && cargo build --release
+      shell: bash
+
+    - name: run tests
+      run: cd ${{ inputs.working-directory }} && cargo test
+      shell: bash
