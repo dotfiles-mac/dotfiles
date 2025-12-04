@@ -35,22 +35,7 @@ dotfiles version   # Show version
 
 ### Ollama Tool
 
-Manage Ollama models with a Rust-based CLI tool. It fetches available models from the internet, allows downloading and running them.
-
-```bash
-# Build the tool
-cd ollama-tool
-cargo build --release
-
-# List available models
-./target/release/ollama-tool list
-
-# Pull a model (e.g., tinyllama)
-./target/release/ollama-tool pull tinyllama
-
-# Run a model
-./target/release/ollama-tool run tinyllama
-```
+Rust CLI for managing Ollama models. See [ollama-tool/README.md](./ollama-tool/README.md) for details.
 
 ### Updating and Restoring Dotfiles
 
