@@ -111,6 +111,7 @@ The setup script automatically configures Git to use the hooks globally and make
 - **Author identity verification**: Checks that commits are authored by "Niladri Das" with email "bniladridas@users.noreply.github.com".
 - **Automated vulnerability scanning**: CodeQL and Trivy bots scan every push and PR for security issues, ensuring robust protection.
 - **Version management**: Dart-powered version bump bot automates semantic versioning updates for the package.
+- **Automation workflows**: GitHub Actions for automated version bumps via PRs and release creation. See [automation documentation](./.github/workflows/automation/README.md).
 
 ## Handling errors
 
