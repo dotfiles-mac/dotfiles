@@ -1,6 +1,6 @@
 # GitHub Dotfiles
 
-This repository provides a comprehensive toolkit for developers, including global Git hooks for consistent commit standards and author identity, automated Mac setup scripts for essential development tools (Python, Node.js, Rust, Go, Flutter, etc.), security scanning bots (CodeQL and Trivy) for vulnerability detection, and a Dart-based version bump system. It ensures secure, standardized, and efficient development workflows across projects.
+This repository provides a comprehensive toolkit for developers, including global Git hooks for consistent commit standards and author identity, automated Mac setup scripts with robust error handling and logging for essential development tools (Python, Node.js, Rust, Go, Flutter, etc.), security scanning bots (CodeQL and Trivy) for vulnerability detection, a Dart-based CLI with help and testing, and automated version bump system. It ensures secure, standardized, and efficient development workflows across projects.
 
 ## Installation
 
@@ -24,6 +24,7 @@ dart pub global activate --source path .
 export PATH="$PATH:$HOME/.pub-cache/bin"
 
 # Now you can use the commands:
+dotfiles --help    # Show help
 dotfiles update    # Update repository
 dotfiles restore   # Restore dotfiles
 dotfiles setup     # Run Mac setup (macOS only)
@@ -105,11 +106,12 @@ The setup script automatically configures Git to use the hooks globally and make
 
 ## Features
 
-- **Pre-commit checks**: Runs pre-commit hooks on push (includes Python linting with black/flake8/mypy/bandit/safety, C++ formatting/linting with clang-format and clang-tidy, Rust formatting/linting/compilation with rustfmt/clippy, Bash linting with shellcheck, Dockerfile linting with hadolint, YAML linting with yamllint, GitHub Actions linting with actionlint, and general checks).
+- **Pre-commit checks**: Runs pre-commit hooks on push (includes Python linting with black/flake8/mypy/bandit/safety, C++ formatting/linting with clang-format and clang-tidy, Rust formatting/linting/compilation with rustfmt/clippy, Bash linting with shellcheck, Dockerfile linting with hadolint, YAML linting with yamllint, GitHub Actions linting with actionlint, Dart linting and testing, and general checks).
 - **YAML linting**: Runs check-yaml from pre-commit.
 - **Commit message validation**: Commit-msg hook ensures messages start with conventional type and are lowercase ≤60 chars. Pre-push hook enforces stricter format with scope, ≤40 chars.
 - **Author identity verification**: Checks that commits are authored by "Niladri Das" with email "bniladridas@users.noreply.github.com".
 - **Automated vulnerability scanning**: CodeQL and Trivy bots scan every push and PR for security issues, ensuring robust protection.
+- **Testing**: Comprehensive unit tests for the Dart CLI, run automatically in CI.
 - **Version management**: Dart-powered version bump bot automates semantic versioning updates for the package.
 - **Automation workflows**: GitHub Actions for automated version bumps via PRs and release creation. See [automation documentation](./.github/workflows/automation/README.md).
 

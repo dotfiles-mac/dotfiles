@@ -1,4 +1,5 @@
 ---
+# SPDX-License-Identifier: MIT
 name: 'Install Dependencies'
 description: 'Install dependencies for linting and checks'
 runs:

@@ -1,5 +1,7 @@
 FROM ubuntu:latest
 
+# SPDX-License-Identifier: MIT
+
 # Install dependencies
 RUN apt-get update && apt-get install -y \
     curl \
