@@ -17,12 +17,26 @@ import 'package:args/args.dart';
 
 void main(List<String> arguments) {
   final parser = ArgParser()
+    ..addFlag('help', abbr: 'h', help: 'Show help')
     ..addCommand('update')
     ..addCommand('restore')
     ..addCommand('setup')
     ..addCommand('version');
 
   final results = parser.parse(arguments);
+
+  if (results['help'] as bool) {
+    print('Usage: dotfiles <command>');
+    print('');
+    print('Commands:');
+    print('  update   - Update repository');
+    print('  restore  - Restore dotfiles');
+    print('  setup    - Run setup script (Mac only)');
+    print('  version  - Show version');
+    print('');
+    print(parser.usage);
+    return;
+  }
 
   if (results.command == null) {
     print('Usage: dotfiles <command>');
@@ -102,7 +116,8 @@ void runSetup() {
   // Check for sudo access
   final sudoCheck = Process.runSync('sudo', ['-n', 'true']);
   if (sudoCheck.exitCode != 0) {
-    print('Setup requires administrator privileges. Please run as admin or ensure sudo access.');
+    print(
+        'Setup requires administrator privileges. Please run as admin or ensure sudo access.');
     exit(1);
   }
 

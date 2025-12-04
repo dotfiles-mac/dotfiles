@@ -84,6 +84,10 @@ brew install flutter
 echo "Installing Dart SDK..."
 brew install dart-sdk
 
+echo "Installing Dart dependencies..."
+cd ~/github-dotfiles
+dart pub get
+
 echo "Installing Docker CLI..."
 brew install docker
 
