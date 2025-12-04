@@ -17,7 +17,11 @@ echo 'PS1="$ "' >> ~/.zshrc
 source ~/.zshrc
 
 echo "Installing Homebrew..."
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+if ! command -v brew &> /dev/null; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+else
+  echo "Homebrew already installed, skipping."
+fi
 
 echo "Configuring Homebrew in Zsh..."
 # shellcheck disable=SC2016
