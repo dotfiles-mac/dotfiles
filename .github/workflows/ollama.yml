@@ -1,7 +1,7 @@
 ---
 # SPDX-License-Identifier: MIT
 
-name: CI
+name: Ollama CI
 permissions:
   contents: read
 
