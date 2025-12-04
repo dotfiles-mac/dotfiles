@@ -13,7 +13,7 @@
 # The above copyright notice and this permission notice shall be included in all
 # copies or substantial portions of the Software.
 
-name: Version Bump
+name: version bump
 
 on:
   push:
@@ -42,7 +42,7 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         fetch-depth: 0
     - uses: dart-lang/setup-dart@v1
-    - name: Install dependencies
+    - name: install dependencies
       run: dart pub get
     - name: Determine bump type
       id: bump
@@ -71,7 +71,7 @@ jobs:
           done
           echo "bump_type=\"$TYPE\"" >> "$GITHUB_OUTPUT"
         fi
-    - name: Bump version
+    - name: bump version
       if: steps.bump.outputs.bump_type != ''
       run: dart run version_bump.dart ${{ steps.bump.outputs.bump_type }}
     - name: Create PR
