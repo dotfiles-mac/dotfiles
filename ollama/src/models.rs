@@ -2,8 +2,10 @@
 
 use scraper::{Html, Selector};
 
+const OLLAMA_LIBRARY_URL: &str = "https://ollama.ai/library";
+
 pub async fn fetch_models() -> Result<Vec<String>, Box<dyn std::error::Error>> {
-    let url = "https://ollama.ai/library";
+    let url = OLLAMA_LIBRARY_URL;
     let response = reqwest::get(url).await?;
     let body = response.text().await?;
     let document = Html::parse_document(&body);

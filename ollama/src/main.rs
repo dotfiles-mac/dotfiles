@@ -12,6 +12,8 @@ use ollama::run_ollama_command;
 use prompts::DEFAULT_SYSTEM_PROMPT;
 use serde::{Deserialize, Serialize};
 
+const OLLAMA_API_BASE: &str = "http://localhost:11434";
+
 #[derive(Serialize)]
 struct GenerateRequest {
     model: String,
@@ -83,7 +85,7 @@ async fn generate_response(
     };
 
     let response = client
-        .post("http://localhost:11434/api/generate")
+        .post(format!("{}/api/generate", OLLAMA_API_BASE))
         .json(&request)
         .send()
         .await?;
