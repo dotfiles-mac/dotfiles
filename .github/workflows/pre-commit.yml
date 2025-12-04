@@ -39,6 +39,8 @@ jobs:
       run: dart pub get
     - name: Run Dart analyze
       run: dart analyze
+    - name: Run Dart tests
+      run: dart test
     - name: Run pre-commit
       run: pre-commit run --all-files --show-diff-on-failure
     - name: Run actionlint
