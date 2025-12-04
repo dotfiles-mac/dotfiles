@@ -74,5 +74,12 @@ jobs:
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
         git add VERSION pubspec.yaml
         VERSION=$(cat VERSION)
+        BRANCH="version-bump-$VERSION"
+        git checkout -b "$BRANCH"
         git commit -m "chore: bump version to $VERSION"
-        git push
+        git push origin "$BRANCH"
+        gh pr create \
+          --title "chore: bump version to $VERSION at $(date)" \
+          --body "Automated version bump to $VERSION at $(date)" \
+          --head "$BRANCH" \
+          --base main
