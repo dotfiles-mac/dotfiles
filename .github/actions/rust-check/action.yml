@@ -9,11 +9,11 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: check formatting
+    - name: format
       run: cd ${{ inputs.working-directory }} && cargo fmt --check
       shell: bash
 
-    - name: run clippy
+    - name: lint
       run: cd ${{ inputs.working-directory }} && cargo clippy -- -D warnings
       shell: bash
 
@@ -21,6 +21,6 @@ runs:
       run: cd ${{ inputs.working-directory }} && cargo build --release
       shell: bash
 
-    - name: run tests
+    - name: test
       run: cd ${{ inputs.working-directory }} && cargo test
       shell: bash

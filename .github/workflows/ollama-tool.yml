@@ -17,16 +17,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: checkout code
+    - name: checkout
       uses: actions/checkout@v4
 
-    - name: install rust
+    - name: rust
       uses: dtolnay/rust-toolchain@stable
 
-    - name: cache dependencies
+    - name: cache
       uses: Swatinem/rust-cache@v2
 
-    - name: rust checks
+    - name: check
       uses: ./.github/actions/rust-check
       with:
         working-directory: ollama-tool
