@@ -35,7 +35,7 @@ dotfiles version   # Show version
 
 ### Ollama Tool
 
-Rust CLI for managing Ollama models. See [ollama-tool/README.md](./ollama-tool/README.md) for details.
+Rust CLI for managing Ollama models. Run with `./bin/ollama-tool` or see [ollama-tool/README.md](./ollama-tool/README.md) for details.
 
 ### Updating and Restoring Dotfiles
 
