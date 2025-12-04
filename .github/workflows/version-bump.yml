@@ -84,7 +84,7 @@ jobs:
         BRANCH="version-bump-$VERSION"
         git checkout -b "$BRANCH"
         git commit -m "chore: bump version to $VERSION"
-        git push origin "$BRANCH"
+        git push origin "$BRANCH" --force
         gh pr create \
           --title "chore: bump version to $VERSION at $(date)" \
           --body "Automated version bump to $VERSION at $(date)" \
