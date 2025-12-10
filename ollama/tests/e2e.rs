@@ -42,7 +42,12 @@ fn test_list_command() {
     assert!(!stderr.contains("unrecognized subcommand"));
     // May fail if no internet, but check it attempts
     let stdout = String::from_utf8_lossy(&output.stdout);
-    assert!(output.status.success() || stdout.contains("NAME") || stderr.contains("network") || stderr.contains("ollama"));
+    assert!(
+        output.status.success()
+            || stdout.contains("NAME")
+            || stderr.contains("network")
+            || stderr.contains("ollama")
+    );
 }
 
 #[test]
