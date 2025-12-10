@@ -1,5 +1,4 @@
 use github_dotfiles_ollama::generate_response;
-use httpmock::prelude::*;
 
 #[tokio::test]
 async fn test_generate_response_integration() {
