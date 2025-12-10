@@ -69,7 +69,7 @@ fn test_remove_command() {
     let output = run_cli(&["remove", "nonexistent-model"]);
     let stderr = String::from_utf8_lossy(&output.stderr);
     assert!(!stderr.contains("unrecognized subcommand"));
-    // May succeed or fail
+    assert!(!output.status.success());
 }
 
 #[test]
