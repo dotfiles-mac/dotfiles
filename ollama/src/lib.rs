@@ -9,16 +9,23 @@ use thiserror::Error;
 
 const OLLAMA_API_BASE: &str = "http://localhost:11434";
 
+/// Request payload for Ollama generate API.
 #[derive(Serialize)]
 pub struct GenerateRequest {
+    /// The model name to use for generation.
     pub model: String,
+    /// The prompt text.
     pub prompt: String,
+    /// The system prompt.
     pub system: String,
+    /// Whether to stream the response.
     pub stream: bool,
 }
 
+/// Response payload from Ollama generate API.
 #[derive(Deserialize)]
 pub struct GenerateResponse {
+    /// The generated response text.
     pub response: String,
 }
 
@@ -39,6 +46,17 @@ pub enum Error {
     Command(String),
 }
 
+/// Generates a response from the Ollama API using the specified model and prompts.
+///
+/// # Arguments
+///
+/// * `model` - The name of the model to use.
+/// * `prompt` - The user prompt.
+/// * `system` - The system prompt.
+///
+/// # Errors
+///
+/// Returns an `Error` if the API request fails or the response cannot be parsed.
 pub async fn generate_response(model: &str, prompt: &str, system: &str) -> Result<(), Error> {
     let client = reqwest::Client::new();
     let request = GenerateRequest {
