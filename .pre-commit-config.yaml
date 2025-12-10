@@ -46,7 +46,7 @@ repos:
   hooks:
   - id: mypy
 - repo: https://github.com/PyCQA/bandit
-  rev: 1.9.2
+  rev: 1.7.9
   hooks:
   - id: bandit
     args: [--skip, B101]  # Skip assert checks
