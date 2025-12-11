@@ -13,4 +13,5 @@ scraper = "0.18"
 thiserror = "1.0"
 
 [dev-dependencies]
+# Used for mocking HTTP requests in integration tests
 httpmock = "0.8"

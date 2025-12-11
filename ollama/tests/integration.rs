@@ -10,10 +10,8 @@ async fn test_generate_response_integration() {
     std::env::set_var("OLLAMA_API_BASE", server.base_url());
 
     let mock = server.mock(|when, then| {
-        when.method(POST)
-            .path("/api/generate");
-        then.status(200)
-            .body(r#"{"response":"Hi there!"}"#);
+        when.method(POST).path("/api/generate");
+        then.status(200).body(r#"{"response":"Hi there!"}"#);
     });
 
     // Test success case with mock
