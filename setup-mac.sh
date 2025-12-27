@@ -175,7 +175,7 @@ brew install actionlint
 echo "Installing yamllint..."
 brew install yamllint
 
-echo "Installing mole..."
+log "Installing mole..."
 if brew install tw93/tap/mole; then
   log "Mole installed successfully."
 else
