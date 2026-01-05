@@ -154,6 +154,9 @@ fi
 echo "Installing GitLab CLI..."
 brew install glab
 
+echo "Installing GitLab Runner..."
+brew install gitlab-runner
+
 echo "Installing pipx..."
 brew install pipx
 
