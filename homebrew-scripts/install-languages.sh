@@ -3,7 +3,7 @@
 # Safe Homebrew install script for programming languages
 # Installs additional programming languages and runtimes
 
-set -e
+set -euo pipefail
 
 echo "Installing additional programming languages via Homebrew..."
 
