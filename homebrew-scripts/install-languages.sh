@@ -7,9 +7,9 @@ set -euo pipefail
 
 echo "Installing additional programming languages via Homebrew..."
 
-brew install ruby
-brew install php
-brew install lua
-brew install perl
+brew install ruby \
+    php \
+    lua \
+    perl
 
 echo "Additional programming languages installed successfully."
