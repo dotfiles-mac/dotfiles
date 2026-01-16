@@ -3,7 +3,7 @@
 # Safe Homebrew check script
 # Lists outdated packages
 
-set -e
+set -euo pipefail
 
 echo "Checking for outdated Homebrew packages..."
 brew outdated
