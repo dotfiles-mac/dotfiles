@@ -7,23 +7,17 @@ set -euo pipefail
 
 echo "Installing common development tools via Homebrew..."
 
-# Version control
-brew install git
-
-# Programming languages and runtimes
-brew install python@3.12
-brew install node
-brew install rust
-brew install go
-
-# Package managers and tools
-brew install npm
-brew install yarn
-
-# Development utilities
-brew install jq
-brew install tree
-brew install wget
+# Version control, languages, runtimes, and tools
+brew install \
+    git \
+    python@3.12 \
+    node \
+    rust \
+    go \
+    yarn \
+    jq \
+    tree \
+    wget
 
 echo "Common development tools installed successfully."
 echo "Note: Python is installed as python@3.12. Use 'python3' to run it."
