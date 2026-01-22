@@ -34,11 +34,11 @@ github_login() {
     USER_INFO=$(curl -s -H "Authorization: token $token" https://api.github.com/user)
 
       USERNAME=$(echo "$USER_INFO" | jq -r '.login')
-      if [ -n "$USERNAME" ]; then
-      echo "$token" > "$TOKEN_FILE"
-      echo "$USERNAME" > "$USER_FILE"
-      chmod 600 "$TOKEN_FILE" "$USER_FILE"
-      log "Successfully logged in as $USERNAME!"
+      if [ -n "$USERNAME" ] && [ "$USERNAME" != "null" ]; then
+        echo "$token" > "$TOKEN_FILE"
+        echo "$USERNAME" > "$USER_FILE"
+        chmod 600 "$TOKEN_FILE" "$USER_FILE"
+        log "Successfully logged in as $USERNAME!"
     else
       log "ERROR: Invalid GitHub token"
       exit 1
