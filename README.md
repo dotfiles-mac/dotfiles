@@ -31,6 +31,21 @@ cd ~/github-dotfiles
 
 ## Usage
 
+### Authentication
+
+Login to access premium features and sync configurations:
+
+```bash
+# Login with token or browser
+./auth/login.sh login
+
+# Check login status  
+./auth/login.sh whoami
+
+# Logout
+./auth/login.sh logout
+```
+
 ### Dart CLI Tool
 
 Install Dart SDK, then use the CLI tool for managing dotfiles:
