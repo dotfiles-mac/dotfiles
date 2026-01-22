@@ -11,13 +11,9 @@ log() {
 
 github_login() {
   mkdir -p "$AUTH_DIR"
-  
+
   log "Opening GitHub OAuth login..."
-  
-  # Generate device code request
-  DEVICE_CODE_URL="https://github.com/login/device/code"
-  CLIENT_ID="your_github_app_client_id"  # Replace with actual client ID
-  
+
   # For now, use GitHub personal access token flow
   echo "Please create a GitHub Personal Access Token:"
   echo "1. Go to: https://github.com/settings/tokens"
@@ -25,18 +21,18 @@ github_login() {
   echo "3. Select scopes: repo, user:email"
   echo "4. Copy the generated token"
   echo ""
-  
+
   open "https://github.com/settings/tokens" 2>/dev/null || \
   xdg-open "https://github.com/settings/tokens" 2>/dev/null || \
   echo "Visit: https://github.com/settings/tokens"
-  
+
   echo "Enter your GitHub token:"
   read -r -s token
-  
+
   if [ -n "$token" ]; then
     # Validate token with GitHub API
     USER_INFO=$(curl -s -H "Authorization: token $token" https://api.github.com/user)
-    
+
     if echo "$USER_INFO" | grep -q '"login"'; then
       USERNAME=$(echo "$USER_INFO" | grep '"login"' | cut -d'"' -f4)
       echo "$token" > "$TOKEN_FILE"

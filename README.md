@@ -39,7 +39,7 @@ Login with your GitHub account to access premium features:
 # Login with GitHub OAuth
 ./auth/login.sh login
 
-# Check login status  
+# Check login status
 ./auth/login.sh whoami
 
 # Logout
