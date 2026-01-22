@@ -67,6 +67,8 @@ sync_pull() {
     # Backup existing files
     [ -f ~/.gitconfig ] && cp ~/.gitconfig ~/.gitconfig.backup
     [ -f ~/.zshrc ] && cp ~/.zshrc ~/.zshrc.backup
+    [ -f ~/.bashrc ] && cp ~/.bashrc ~/.bashrc.backup
+    [ -f ~/.vimrc ] && cp ~/.vimrc ~/.vimrc.backup
 
     # Restore files
     [ -f .gitconfig ] && cp .gitconfig ~/
