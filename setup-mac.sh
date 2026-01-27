@@ -248,7 +248,7 @@ brew install docker
 echo "Installing QEMU..."
 brew install qemu
 
-log "Installing Brev..."
+echo "Installing Brev..."
 if brew install brevdev/homebrew-brev/brev; then
   log "Brev installed successfully."
 else
