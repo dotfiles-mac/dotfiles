@@ -61,7 +61,9 @@ async fn main() -> Result<(), Error> {
         } => {
             println!("Generating response with model: {}", model);
             let system_prompt = system.unwrap_or_else(|| DEFAULT_SYSTEM_PROMPT.to_string());
-            generate_response(&model, &prompt, &system_prompt).await?;
+            let client = reqwest::Client::new();
+            let response = generate_response(&client, &model, &prompt, &system_prompt).await?;
+            println!("{}", response.response);
         }
     }
     Ok(())
