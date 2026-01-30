@@ -2,7 +2,19 @@
 
 //! # Ollama Tool Library
 //!
-//! Shared functions for the Ollama CLI tool.
+//! A Rust library for interacting with Ollama AI models through their API.
+//!
+//! ## Quick Start
+//!
+//! ```no_run
+//! use github_dotfiles_ollama::generate_response;
+//!
+//! #[tokio::main]
+//! async fn main() -> Result<(), Box<dyn std::error::Error>> {
+//!     generate_response("llama2", "Hello", "You are helpful").await?;
+//!     Ok(())
+//! }
+//! ```
 
 use serde::{Deserialize, Serialize};
 use thiserror::Error;
@@ -12,7 +24,7 @@ fn get_ollama_api_base() -> String {
 }
 
 /// Request payload for Ollama generate API.
-#[derive(Serialize)]
+#[derive(Serialize, Debug, Clone, PartialEq)]
 pub struct GenerateRequest {
     /// The model name to use for generation.
     pub model: String,
@@ -24,8 +36,24 @@ pub struct GenerateRequest {
     pub stream: bool,
 }
 
+impl GenerateRequest {
+    /// Creates a new generate request.
+    pub fn new(
+        model: impl Into<String>,
+        prompt: impl Into<String>,
+        system: impl Into<String>,
+    ) -> Self {
+        Self {
+            model: model.into(),
+            prompt: prompt.into(),
+            system: system.into(),
+            stream: false,
+        }
+    }
+}
+
 /// Response payload from Ollama generate API.
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug, Clone, PartialEq)]
 pub struct GenerateResponse {
     /// The generated response text.
     pub response: String,
@@ -50,6 +78,18 @@ pub enum Error {
 
 /// Generates a response from the Ollama API using the specified model and prompts.
 ///
+/// # Examples
+///
+/// ```no_run
+/// use github_dotfiles_ollama::generate_response;
+///
+/// #[tokio::main]
+/// async fn main() -> Result<(), Box<dyn std::error::Error>> {
+///     generate_response("llama2", "What is Rust?", "You are helpful").await?;
+///     Ok(())
+/// }
+/// ```
+///
 /// # Arguments
 ///
 /// * `model` - The name of the model to use.
@@ -58,15 +98,13 @@ pub enum Error {
 ///
 /// # Errors
 ///
-/// Returns an `Error` if the API request fails or the response cannot be parsed.
+/// This function will return an error if:
+/// - The HTTP request to Ollama API fails
+/// - The response cannot be parsed as JSON
+/// - Network connectivity issues occur
 pub async fn generate_response(model: &str, prompt: &str, system: &str) -> Result<(), Error> {
     let client = reqwest::Client::new();
-    let request = GenerateRequest {
-        model: model.to_string(),
-        prompt: prompt.to_string(),
-        system: system.to_string(),
-        stream: false,
-    };
+    let request = GenerateRequest::new(model, prompt, system);
 
     let response = client
         .post(format!("{}/api/generate", get_ollama_api_base()))

@@ -2,6 +2,14 @@
 name = "github-dotfiles-ollama"
 version = "0.1.0"
 edition = "2021"
+authors = ["Niladri Das <bniladridas@users.noreply.github.com>"]
+description = "Rust CLI for managing Ollama models"
+license = "MIT"
+homepage = "https://github.com/bniladridas/github-dotfiles"
+documentation = "https://docs.rs/github-dotfiles-ollama"
+repository = "https://github.com/bniladridas/github-dotfiles"
+keywords = ["ollama", "ai", "cli", "models"]
+categories = ["command-line-utilities", "api-bindings"]
 
 [dependencies]
 tokio = { version = "1", features = ["rt-multi-thread", "macros"] }
