@@ -11,7 +11,9 @@
 //!
 //! #[tokio::main]
 //! async fn main() -> Result<(), Box<dyn std::error::Error>> {
-//!     generate_response("llama2", "Hello", "You are helpful").await?;
+//!     let client = reqwest::Client::new();
+//!     let response = generate_response(&client, "llama2", "Hello", "You are helpful").await?;
+//!     println!("{}", response.response);
 //!     Ok(())
 //! }
 //! ```
@@ -85,13 +87,16 @@ pub enum Error {
 ///
 /// #[tokio::main]
 /// async fn main() -> Result<(), Box<dyn std::error::Error>> {
-///     generate_response("llama2", "What is Rust?", "You are helpful").await?;
+///     let client = reqwest::Client::new();
+///     let response = generate_response(&client, "llama2", "What is Rust?", "You are helpful").await?;
+///     println!("{}", response.response);
 ///     Ok(())
 /// }
 /// ```
 ///
 /// # Arguments
 ///
+/// * `client` - A shared reqwest client for connection pooling.
 /// * `model` - The name of the model to use.
 /// * `prompt` - The user prompt.
 /// * `system` - The system prompt.
@@ -102,8 +107,12 @@ pub enum Error {
 /// - The HTTP request to Ollama API fails
 /// - The response cannot be parsed as JSON
 /// - Network connectivity issues occur
-pub async fn generate_response(model: &str, prompt: &str, system: &str) -> Result<(), Error> {
-    let client = reqwest::Client::new();
+pub async fn generate_response(
+    client: &reqwest::Client,
+    model: &str,
+    prompt: &str,
+    system: &str,
+) -> Result<GenerateResponse, Error> {
     let request = GenerateRequest::new(model, prompt, system);
 
     let response = client
@@ -113,6 +122,5 @@ pub async fn generate_response(model: &str, prompt: &str, system: &str) -> Resul
         .await?;
 
     let result: GenerateResponse = response.json().await?;
-    println!("{}", result.response);
-    Ok(())
+    Ok(result)
 }

@@ -15,8 +15,10 @@ async fn test_generate_response_integration() {
     });
 
     // Test success case with mock
-    let result = generate_response("test-model", "Hello", "You are helpful").await;
+    let client = reqwest::Client::new();
+    let result = generate_response(&client, "test-model", "Hello", "You are helpful").await;
     assert!(result.is_ok());
+    assert_eq!(result.unwrap().response, "Hi there!");
 
     mock.assert();
 }
