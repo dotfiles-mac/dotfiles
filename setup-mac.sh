@@ -120,6 +120,14 @@ else
   exit 1
 fi
 
+log "Installing KiloCode CLI..."
+if npm install -g @kilocode/cli; then
+  log "KiloCode CLI installed successfully."
+else
+  log "ERROR: Failed to install KiloCode CLI."
+  exit 1
+fi
+
 echo "Installing Ruby..."
 read -r -p "Choose Ruby installation method (1 for direct brew install, 2 for rbenv): " ruby_choice
 case "$ruby_choice" in
