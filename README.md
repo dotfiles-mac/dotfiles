@@ -128,6 +128,15 @@ gt repo sync                             # Sync all branches in repo
 
 For PR reviews, visit https://app.graphite.com. For advanced usage, see [Graphite docs](https://graphite.dev/docs).
 
+### KiloCode CLI
+
+This repository uses KiloCode CLI for code review, ensuring consistent style and quality in pull requests.
+
+```bash
+kilocode review <pr-url>  # Review a pull request
+kilocode style check      # Check code style
+```
+
 ### Updating and Restoring Dotfiles
 
 To update the repository and restore the latest dotfiles to your home directory:
