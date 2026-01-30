@@ -73,6 +73,14 @@ fi
 echo "Installing opencode..."
 brew install opencode
 
+log "Installing Gemini CLI..."
+if brew install gemini-cli; then
+  log "Gemini CLI installed successfully."
+else
+  log "ERROR: Failed to install Gemini CLI."
+  exit 1
+fi
+
 echo "Installing Kiro CLI..."
 KIRO_INSTALL_SCRIPT=$(mktemp)
 if curl -fsSL https://cli.kiro.dev/install -o "$KIRO_INSTALL_SCRIPT"; then
