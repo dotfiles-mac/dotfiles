@@ -15,10 +15,10 @@ usage() {
 
 convert_url() {
     local url="$1"
-    if [[ "$url" =~ github\.com ]]; then
+    if [[ "$url" =~ ^https://github\.com/[^/]+/[^/]+/pull/[0-9]+ ]]; then
         echo "${url//github.com/reviewstack.dev}"
     else
-        echo "Error: Not a GitHub URL"
+        echo "Error: Invalid GitHub PR URL. Please provide a URL like https://github.com/owner/repo/pull/123" >&2
         exit 1
     fi
 }
