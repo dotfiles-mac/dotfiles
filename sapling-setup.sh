@@ -14,10 +14,10 @@ else
 fi
 
 # Configure Sapling identity (matches existing Git config)
-if git config --global user.name >/dev/null 2>&1 && git config --global user.email >/dev/null 2>&1; then
-    GIT_NAME=$(git config --global user.name)
-    GIT_EMAIL=$(git config --global user.email)
+GIT_NAME=$(git config --global user.name 2>/dev/null || echo "")
+GIT_EMAIL=$(git config --global user.email 2>/dev/null || echo "")
 
+if [[ -n "$GIT_NAME" && -n "$GIT_EMAIL" ]]; then
     echo "Configuring Sapling with Git identity: $GIT_NAME <$GIT_EMAIL>"
     sl config --user ui.username "$GIT_NAME <$GIT_EMAIL>"
 else
