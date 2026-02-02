@@ -2,6 +2,69 @@
 
 This repository provides a comprehensive toolkit for developers, including global Git hooks for consistent commit standards and author identity, automated Mac setup scripts with robust error handling and logging for essential development tools (Python, Node.js, Rust, Go, Flutter, Ollama, Gemini CLI, KiloCode CLI, etc.), security scanning bots (CodeQL and Trivy) for vulnerability detection, a Dart-based CLI with help and testing, a Rust-based Ollama model manager, and automated version bump system. It ensures secure, standardized, and efficient development workflows across projects.
 
+## Stacked Development Workflow
+
+This repository provides a **complete stacked development workflow** using Sapling, Graphite, and ReviewStack. Here's how to use them together:
+
+### Complete Workflow Example
+
+```bash
+# 1. Setup (one-time)
+./sapling-setup.sh                    # Install Sapling
+# Install Graphite: npm install -g @withgraphite/graphite-cli
+
+# 2. Start a new feature stack
+sl clone https://github.com/owner/repo.git
+cd repo
+sl goto main
+
+# 3. Create your stack locally with Sapling
+sl commit -m "feat: add database schema"
+sl commit -m "feat: add API endpoints"
+sl commit -m "feat: add frontend components"
+sl commit -m "test: add integration tests"
+
+# 4. View your stack
+sl ssl                                # Show smartlog
+sl web                                # Launch browser UI
+
+# 5. Submit stack as GitHub PRs with Graphite
+gt auth                               # Login to GitHub
+gt repo init                          # Initialize Graphite
+gt submit --stack --reviewers user1,user2
+
+# 6. Review PRs with ReviewStack
+./bin/reviewstack --current           # Open current PR in ReviewStack
+# Or convert any GitHub PR URL:
+./bin/reviewstack https://github.com/owner/repo/pull/123
+
+# 7. Make changes based on feedback
+sl goto <commit-hash>                 # Navigate to specific commit
+sl amend                              # Modify the commit
+sl absorb                             # Auto-absorb working changes
+
+# 8. Update PRs
+gt sync --restack                     # Sync and update all PRs
+
+# 9. Navigate your stack
+sl next 2                             # Move up 2 commits
+sl prev                               # Move down 1 commit
+gt up                                 # Graphite navigation
+gt down                               # Graphite navigation
+```
+
+### Key Benefits
+
+- **Sapling**: Superior local stack management, no staging area, built-in undo
+- **Graphite**: Seamless GitHub PR creation and management for stacks
+- **ReviewStack**: Stack-aware code review with side-by-side diff/timeline
+
+### Keyboard Shortcuts (ReviewStack)
+
+- `Shift + N/P` - Navigate stack PRs
+- `Ctrl + .` - Toggle timeline view
+- `Alt + A/R/C` - Approve/Request changes/Comment
+
 ## Installation
 
 Choose your preferred installation method:
@@ -109,6 +172,20 @@ mo optimize --whitelist      # Manage protected optimization rules
 
 Rust CLI for managing Ollama models. Run with `./bin/ollama-tool` or see [ollama/README.md](./ollama/README.md) for details.
 
+### Sapling
+
+Sapling SCM provides an intuitive alternative to Git with superior stacked commit workflows, built-in undo operations, and a web-based interface for managing commit stacks.
+
+```bash
+./sapling-setup.sh                       # Install and configure Sapling
+sl clone <repo>                          # Clone repository
+sl commit -m "message"                   # Create commit (no staging area)
+sl web                                   # Launch browser-based UI
+sl ssl                                   # Show smartlog with PR status
+sl undo -i                               # Interactive undo with preview
+sl absorb                                # Auto-absorb changes into stack
+```
+
 ### Graphite
 
 Graphite revolutionizes Git workflows with stacked pull requests, enabling faster reviews and parallel development by breaking large changes into manageable, interdependent PRs.
@@ -126,7 +203,15 @@ gt stack                                 # View current stack structure
 gt repo sync                             # Sync all branches in repo
 ```
 
-For PR reviews, visit https://app.graphite.com. For advanced usage, see [Graphite docs](https://graphite.dev/docs).
+For PR reviews, visit https://app.graphite.com or use [ReviewStack](https://reviewstack.dev) for enhanced stacked PR review experience. For advanced usage, see [Graphite docs](https://graphite.dev/docs).
+
+**ReviewStack Usage**: Replace `github.com` with `reviewstack.dev` in any PR URL for stack-aware review interface with side-by-side diff/timeline view.
+
+```bash
+# Quick ReviewStack access
+./bin/reviewstack https://github.com/owner/repo/pull/123  # Convert and open URL
+./bin/reviewstack --current                               # Open current branch's PR
+```
 
 ### KiloCode CLI
 

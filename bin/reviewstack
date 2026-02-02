@@ -1,0 +1,67 @@
+#!/bin/bash
+
+# ReviewStack helper - Convert GitHub PR URLs to ReviewStack URLs
+set -euo pipefail
+
+usage() {
+    echo "Usage: $0 <github-pr-url>"
+    echo "       $0 --current  # Use current branch's PR"
+    echo ""
+    echo "Examples:"
+    echo "  $0 https://github.com/owner/repo/pull/123"
+    echo "  $0 --current"
+    exit 1
+}
+
+convert_url() {
+    local url="$1"
+    if [[ "$url" =~ github\.com ]]; then
+        echo "${url//github.com/reviewstack.dev}"
+    else
+        echo "Error: Not a GitHub URL"
+        exit 1
+    fi
+}
+
+open_reviewstack() {
+    local reviewstack_url="$1"
+    echo "Opening: $reviewstack_url"
+
+    if command -v open >/dev/null 2>&1; then
+        open "$reviewstack_url"
+    elif command -v xdg-open >/dev/null 2>&1; then
+        xdg-open "$reviewstack_url"
+    else
+        echo "Copy this URL to your browser:"
+        echo "$reviewstack_url"
+    fi
+}
+
+if [[ $# -eq 0 ]]; then
+    usage
+fi
+
+case "$1" in
+    --current)
+        if command -v gh >/dev/null 2>&1; then
+            PR_URL=$(gh pr view --web --json url -q .url 2>/dev/null || echo "")
+            if [[ -n "$PR_URL" ]]; then
+                REVIEWSTACK_URL=$(convert_url "$PR_URL")
+                open_reviewstack "$REVIEWSTACK_URL"
+            else
+                echo "Error: No PR found for current branch"
+                exit 1
+            fi
+        else
+            echo "Error: GitHub CLI (gh) not installed"
+            exit 1
+        fi
+        ;;
+    --help|-h)
+        usage
+        ;;
+    *)
+        REVIEWSTACK_URL=$(convert_url "$1")
+        open_reviewstack "$REVIEWSTACK_URL"
+        ;;
+esac
