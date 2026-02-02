@@ -44,7 +44,7 @@ fi
 case "$1" in
     --current)
         if command -v gh >/dev/null 2>&1; then
-            PR_URL=$(gh pr view --web --json url -q .url 2>/dev/null || echo "")
+            PR_URL=$(gh pr view --json url -q .url 2>/dev/null || echo "")
             if [[ -n "$PR_URL" ]]; then
                 REVIEWSTACK_URL=$(convert_url "$PR_URL")
                 open_reviewstack "$REVIEWSTACK_URL"
