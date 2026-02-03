@@ -73,6 +73,9 @@ fi
 echo "Installing opencode..."
 brew install opencode
 
+echo "Installing codex..."
+brew install codex
+
 log "Installing Gemini CLI..."
 if brew install gemini-cli; then
   log "Gemini CLI installed successfully."
