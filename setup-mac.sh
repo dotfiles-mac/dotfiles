@@ -132,7 +132,7 @@ else
 fi
 
 log "Installing Kimi CLI..."
-if curl -LsSf https://code.kimi.com/install.sh | bash; then
+if bash -c 'set -o pipefail; curl -LsSf https://code.kimi.com/install.sh | bash'; then
   log "Kimi CLI installed successfully."
 else
   log "ERROR: Failed to install Kimi CLI."
