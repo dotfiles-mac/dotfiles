@@ -77,12 +77,7 @@ brew tap dotfiles-mac/dotfiles https://github.com/dotfiles-mac/dotfiles
 brew install dotfiles
 ```
 
-### Option 3: UV (Python Package Manager)
-```bash
-uv tool install git+https://github.com/dotfiles-mac/dotfiles.git
-```
-
-### Option 4: Manual Clone
+### Option 3: Manual Clone
 ```bash
 git clone https://github.com/dotfiles-mac/dotfiles.git ~/github-dotfiles
 cd ~/github-dotfiles
