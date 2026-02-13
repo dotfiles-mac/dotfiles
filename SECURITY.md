@@ -6,4 +6,4 @@ Report security vulnerabilities by creating a private security advisory on GitHu
 
 ## Security Measures
 
-This repository includes automated security scanning with CodeQL and Trivy, plus pre-commit checks for vulnerabilities.
+This repository includes automated security scanning with Trivy, plus pre-commit checks for vulnerabilities.
