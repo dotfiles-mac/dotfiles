@@ -12,6 +12,7 @@ brew install htop \
     vim \
     neovim \
     curl \
-    git-lfs
+    git-lfs \
+    coderabbit
 
 echo "Common utilities installed successfully."
