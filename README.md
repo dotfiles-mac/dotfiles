@@ -228,7 +228,8 @@ cd ~/github-dotfiles
 
 This script pulls the latest changes and copies `.gitconfig`, `.pre-commit-config.yaml`, and `.yamllint` to `~/`.
 
-### Initial Mac Setup
+<details>
+<summary><b>Initial Mac Setup</b></summary>
 
 For a new Mac, run the setup script to install actionlint, Brev, Cocoapods, codex, Docker CLI, Flutter, GitHub CLI, GitLab CLI, Go, Homebrew, KiloCode CLI, Kimi CLI, Kiro CLI, LLVM, mole, Node.js, Ollama, opencode, Python, QEMU, Ruby, Rust, yamllint, Zsh, and configure Git hooks globally. It also offers to log in to Docker Hub:
 
@@ -242,7 +243,8 @@ Restart your terminal or run `source ~/.zprofile` to apply changes.
 
 </details>
 
-### Git Hooks Setup
+<details>
+<summary><b>Git Hooks Setup</b></summary>
 
 The setup script automatically configures Git to use the hooks globally and makes them executable. If setting up manually:
 
@@ -312,7 +314,8 @@ When the hook fails, it will block the push with an error message. Common issues
 
 ## Advanced Usage
 
-### Customizing hooks
+<details>
+<summary><b>Customizing hooks</b></summary>
 
 You can modify the `pre-push` hook in `git-hooks/pre-push` to add custom checks.
 
@@ -322,7 +325,8 @@ The hook outputs detailed messages for each check. Run `git push` to see the val
 
 </details>
 
-## Docker Images
+<details>
+<summary><b>Docker Images</b></summary>
 
 Pre-built Docker images are available for containerized use:
 
