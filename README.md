@@ -1,5 +1,7 @@
 # GitHub Dotfiles
 
+<img src="github-dotfiles.png" width="200" alt="GitHub Dotfiles Logo">
+
 This repository provides a comprehensive toolkit for developers, including global Git hooks for consistent commit standards and author identity, automated Mac setup scripts with robust error handling and logging for essential development tools (Python, Node.js, Rust, Go, Flutter, Ollama, Gemini CLI, KiloCode CLI, etc.), security scanning bot (Trivy) for vulnerability detection, a Dart-based CLI with help and testing, a Rust-based Ollama model manager, and automated version bump system. It ensures secure, standardized, and efficient development workflows across projects.
 
 <details>
