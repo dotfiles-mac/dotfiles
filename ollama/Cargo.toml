@@ -5,9 +5,9 @@ edition = "2021"
 authors = ["Niladri Das <bniladridas@users.noreply.github.com>"]
 description = "Rust CLI for managing Ollama models"
 license = "MIT"
-homepage = "https://github.com/bniladridas/github-dotfiles/tree/main/ollama"
+homepage = "https://github.com/dotfiles-mac/dotfiles/tree/main/ollama"
 documentation = "https://docs.rs/github-dotfiles-ollama"
-repository = "https://github.com/bniladridas/github-dotfiles/tree/main/ollama"
+repository = "https://github.com/dotfiles-mac/dotfiles/tree/main/ollama"
 keywords = ["ollama", "ai", "cli", "models"]
 categories = ["command-line-utilities", "api-bindings"]
 

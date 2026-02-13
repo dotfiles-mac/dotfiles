@@ -68,23 +68,23 @@ Choose your preferred installation method:
 
 ### Option 1: Direct Bash (Recommended)
 ```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/bniladridas/github-dotfiles/main/setup-mac.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/dotfiles-mac/dotfiles/main/setup-mac.sh)"
 ```
 
 ### Option 2: Homebrew
 ```bash
-brew tap bniladridas/dotfiles https://github.com/bniladridas/github-dotfiles
+brew tap dotfiles-mac/dotfiles https://github.com/dotfiles-mac/dotfiles
 brew install dotfiles
 ```
 
 ### Option 3: UV (Python Package Manager)
 ```bash
-uv tool install git+https://github.com/bniladridas/github-dotfiles.git
+uv tool install git+https://github.com/dotfiles-mac/dotfiles.git
 ```
 
 ### Option 4: Manual Clone
 ```bash
-git clone https://github.com/bniladridas/github-dotfiles.git ~/github-dotfiles
+git clone https://github.com/dotfiles-mac/dotfiles.git ~/github-dotfiles
 cd ~/github-dotfiles
 ./setup-mac.sh
 ```
@@ -236,7 +236,7 @@ This script pulls the latest changes and copies `.gitconfig`, `.pre-commit-confi
 For a new Mac, run the setup script to install actionlint, Brev, Cocoapods, codex, Docker CLI, Flutter, GitHub CLI, GitLab CLI, Go, Homebrew, KiloCode CLI, Kimi CLI, Kiro CLI, LLVM, mole, Node.js, Ollama, opencode, Python, QEMU, Ruby, Rust, yamllint, Zsh, and configure Git hooks globally. It also offers to log in to Docker Hub:
 
 ```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/bniladridas/github-dotfiles/main/setup-mac.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/dotfiles-mac/dotfiles/main/setup-mac.sh)"
 ```
 
 Or download and run the script manually.
@@ -333,7 +333,7 @@ The hook outputs detailed messages for each check. Run `git push` to see the val
 Pre-built Docker images are available for containerized use:
 
 - **Docker Hub**: `docker pull harpertoken/dotfiles:latest`
-- **GHCR**: `docker pull ghcr.io/bniladridas/github-dotfiles:latest`
+- **GHCR**: `docker pull ghcr.io/dotfiles-mac/dotfiles:latest`
 
 </details>
 
