@@ -25,8 +25,11 @@ if ! grep -q 'PS1=' ~/.zshrc; then
   echo 'PS1="$ "' >> ~/.zshrc
 fi
 
-# shellcheck disable=SC1090
-source ~/.zshrc
+# Only source zshrc if running in zsh
+if [ -n "$ZSH_VERSION" ]; then
+  # shellcheck disable=SC1090
+  source ~/.zshrc
+fi
 
 log "Installing Homebrew..."
 if ! command -v brew &> /dev/null; then
