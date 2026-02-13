@@ -2,7 +2,8 @@
 
 This repository provides a comprehensive toolkit for developers, including global Git hooks for consistent commit standards and author identity, automated Mac setup scripts with robust error handling and logging for essential development tools (Python, Node.js, Rust, Go, Flutter, Ollama, Gemini CLI, KiloCode CLI, etc.), security scanning bot (Trivy) for vulnerability detection, a Dart-based CLI with help and testing, a Rust-based Ollama model manager, and automated version bump system. It ensures secure, standardized, and efficient development workflows across projects.
 
-## Stacked Development Workflow
+<details>
+<summary><b>Stacked Development Workflow</b></summary>
 
 This repository includes tools for stacked development using Sapling, Graphite, and ReviewStack.
 
@@ -56,6 +57,8 @@ gt up / gt down
 - `Shift + N/P` - Navigate PRs
 - `Ctrl + .` - Toggle timeline
 - `Alt + A/R/C` - Approve/Request/Comment
+
+</details>
 
 ## Installation
 
@@ -237,6 +240,8 @@ Or download and run the script manually.
 
 Restart your terminal or run `source ~/.zprofile` to apply changes.
 
+</details>
+
 ### Git Hooks Setup
 
 The setup script automatically configures Git to use the hooks globally and makes them executable. If setting up manually:
@@ -285,11 +290,13 @@ The setup script automatically configures Git to use the hooks globally and make
    pre-commit install  # In each project repo
    ```
 
+</details>
+
 ## Features
 
 - **Code quality assurance**: Pre-commit hooks enforce linting, formatting, and testing across `Python`, `Rust`, `C++`, `Bash`, `YAML`, `Docker`, `GitHub Actions`, and `Dart`.
 - **Commit standards**: Validates conventional commit messages and author identity for consistent history.
-- **Security scanning**: Automated `CodeQL` and `Trivy` checks safeguard against vulnerabilities on every push and PR.
+- **Security scanning**: Automated `Trivy` checks safeguard against vulnerabilities on every push and PR.
 - **AI model management**: `Rust`-based `Ollama` tool for seamless model fetching, downloading, and execution.
 - **Git workflow enhancement**: `Graphite` enables efficient stacked pull requests for parallel development and faster reviews.
 - **Automated testing**: Comprehensive `Dart` CLI unit tests run in CI for reliability.
@@ -313,12 +320,16 @@ You can modify the `pre-push` hook in `git-hooks/pre-push` to add custom checks.
 
 The hook outputs detailed messages for each check. Run `git push` to see the validation in action.
 
+</details>
+
 ## Docker Images
 
 Pre-built Docker images are available for containerized use:
 
 - **Docker Hub**: `docker pull harpertoken/dotfiles:latest`
 - **GHCR**: `docker pull ghcr.io/bniladridas/github-dotfiles:latest`
+
+</details>
 
 ## Requirements
 
