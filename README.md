@@ -79,8 +79,8 @@ brew install dotfiles
 
 ### Option 3: Manual Clone
 ```bash
-git clone https://github.com/dotfiles-mac/dotfiles.git ~/github-dotfiles
-cd ~/github-dotfiles
+git clone https://github.com/dotfiles-mac/dotfiles.git ~/dotfiles
+cd ~/dotfiles
 ./setup-mac.sh
 ```
 
@@ -219,7 +219,7 @@ kilocode style check      # Check code style
 To update the repository and restore the latest dotfiles to your home directory:
 
 ```bash
-cd ~/github-dotfiles
+cd ~/dotfiles
 ./restore/update_and_restore.sh
 ```
 
@@ -248,13 +248,13 @@ The setup script automatically configures Git to use the hooks globally and make
 1. Make the hooks executable:
 
     ```bash
-    chmod +x ~/github-dotfiles/git-hooks/*
+    chmod +x ~/dotfiles/git-hooks/*
     ```
 
 2. Configure Git to use these hooks globally:
 
     ```bash
-    git config --global core.hooksPath ~/github-dotfiles/git-hooks
+    git config --global core.hooksPath ~/dotfiles/git-hooks
     ```
 
 3. Verify the hooks setup:

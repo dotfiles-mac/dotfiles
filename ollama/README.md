@@ -13,7 +13,7 @@ Clone the repository and build the tool:
 
 ```bash
 git clone https://github.com/dotfiles-mac/dotfiles.git
-cd github-dotfiles/ollama
+cd ~/dotfiles/ollama
 cargo build --release
 ```
 

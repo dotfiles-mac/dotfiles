@@ -23,7 +23,7 @@ for file in "${dotfiles[@]}"; do
 done
 
 echo "Setting up Git hooks..."
-git config --global core.hooksPath ~/github-dotfiles/git-hooks
-chmod +x ~/github-dotfiles/git-hooks/*
+git config --global core.hooksPath ~/dotfiles/git-hooks
+chmod +x ~/dotfiles/git-hooks/*
 
 echo "Restore complete!"
