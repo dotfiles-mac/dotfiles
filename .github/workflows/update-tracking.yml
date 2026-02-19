@@ -19,7 +19,7 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
-          const trackingIssueNumber = 52;
+          const trackingIssueNumber = 5;
 
           // Get event details
           const { action, number } = context.payload;
