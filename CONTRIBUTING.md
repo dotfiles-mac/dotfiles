@@ -1,6 +1,6 @@
-# Contributing to GitHub Dotfiles
+# Contributing to Dotfiles for Mac
 
-First off, thank you for considering contributing to GitHub Dotfiles! It's people like you that make this project great.
+First off, thank you for considering contributing to Dotfiles for Mac! It's people like you that make this project great.
 
 ## Getting Started
 
