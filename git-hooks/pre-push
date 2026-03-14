@@ -57,6 +57,11 @@ while read -r local_ref local_sha _ remote_sha; do
             echo "   Please use: type[scope] or type(scope): description (lowercase, ≤40 chars)"
             exit 1
         fi
+        # Prevent "add" verb
+        if echo "$first_line" | grep -qE '^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\[.+?\]|\(.+?\))?: add'; then
+            echo "❌ Commit $commit message uses 'add': please use a more specific verb (e.g., 'create', 'install', 'include', 'append')"
+            exit 1
+        fi
 
         # Validate author identity
         if [ "$author_name" != "Niladri Das" ]; then
