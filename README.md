@@ -286,6 +286,20 @@ The setup script automatically configures Git to use the hooks globally and make
 
    ```bash
    pip install pre-commit
+   ```
+
+   **Note**: If you've set `core.hooksPath` globally (step 2 above), pre-commit won't install directly. Run these commands instead:
+
+   ```bash
+   git config --global --unset core.hooksPath
+   pre-commit install -t pre-commit -t commit-msg
+   cp .git/hooks/pre-commit ~/dotfiles/git-hooks/
+   cp .git/hooks/commit-msg ~/dotfiles/git-hooks/
+   git config --global core.hooksPath ~/dotfiles/git-hooks
+   ```
+
+   Then in each project repo, run:
+   ```bash
    pre-commit install  # In each project repo
    ```
 
