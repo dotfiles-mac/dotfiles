@@ -33,7 +33,12 @@ while read -r local_ref local_sha _ remote_sha; do
     if [ "$remote_sha" = "0000000000000000000000000000000000000000" ]; then
         commits=$(git rev-list "$local_sha" --not --all)
     else
-        commits=$(git rev-list "$local_sha" --not "$remote_sha")
+        default_remote_ref=$(git symbolic-ref -q --short "refs/remotes/$remote_name/HEAD" || true)
+        if [ -n "$default_remote_ref" ]; then
+            commits=$(git rev-list "$local_sha" --not "$remote_sha" "$default_remote_ref")
+        else
+            commits=$(git rev-list "$local_sha" --not "$remote_sha")
+        fi
     fi
 
     echo "🔎 Checking commits for $local_ref..."
