@@ -35,16 +35,20 @@ jobs:
       run: |
         CURRENT_VERSION=$(cat VERSION)
         PREVIOUS_VERSION=$(git show HEAD~1:VERSION 2>/dev/null || echo "")
-         if [ "$CURRENT_VERSION" != "$PREVIOUS_VERSION" ]; then
-           echo "version_changed=true" >> "$GITHUB_OUTPUT"
-           echo "new_version=$CURRENT_VERSION" >> "$GITHUB_OUTPUT"
-         else
-           echo "version_changed=false" >> "$GITHUB_OUTPUT"
-         fi
+        if [ "$CURRENT_VERSION" != "$PREVIOUS_VERSION" ]; then
+          echo "version_changed=true" >> "$GITHUB_OUTPUT"
+          echo "new_version=$CURRENT_VERSION" >> "$GITHUB_OUTPUT"
+        else
+          echo "version_changed=false" >> "$GITHUB_OUTPUT"
+        fi
     - name: create release
       if: steps.version_check.outputs.version_changed == 'true'
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         VERSION="${{ steps.version_check.outputs.new_version }}"
+        if gh release view "v${VERSION}" >/dev/null 2>&1; then
+          echo "Release v${VERSION} already exists"
+          exit 0
+        fi
         gh release create "v${VERSION}" --title "v${VERSION}" --notes "Release ${VERSION}"
