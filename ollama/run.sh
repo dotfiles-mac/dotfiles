@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# SPDX-FileCopyrightText: 2025-2026 Niladri Das
 # SPDX-License-Identifier: MIT
 
 # Script to build and run the Ollama tool

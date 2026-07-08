@@ -4,13 +4,12 @@ set -euo pipefail
 # Top-level bootstrap dispatcher
 # - Quiet by default; pass --verbose or -v to see actions
 # - Exits silently on non-Darwin hosts
-QUIET=true
 ARGS=()
 
 for arg in "$@"; do
   case "$arg" in
-    -v|--verbose) QUIET=false; ARGS+=("$arg") ;;
-    -q|--quiet) QUIET=true; ARGS+=("$arg") ;;
+    -v|--verbose) ARGS+=("$arg") ;;
+    -q|--quiet) ARGS+=("$arg") ;;
     -h|--help) ARGS+=("$arg") ;;
     *) ARGS+=("$arg") ;;
   esac
