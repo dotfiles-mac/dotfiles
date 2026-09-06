@@ -4,7 +4,7 @@
 
 name: dotfiles_cli
 description: Dotfiles with Git hooks, Mac setup, security scanning, and version management.
-version: 1.5.25
+version: 1.5.26
 environment:
   sdk: '>=3.0.0 <4.0.0'
 dependencies:
