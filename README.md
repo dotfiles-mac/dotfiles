@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Coccinella-Labs/dotfiles/main/.github/assets/thumbnail.png" alt="dotfiles" width="100%">
+</p>
+
 # Dotfiles for Mac
 
 <img src="dotfiles-for-mac.png" width="200" alt="Dotfiles for Mac Logo">
